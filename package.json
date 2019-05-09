@@ -1,0 +1,26 @@
+{
+  "name": "@jiumao/policy",
+  "version": "0.0.1",
+  "main": "lib/redux.js",
+  "unpkg": "dist/redux.js",
+  "module": "es/redux.js",
+  "typings": "./index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "bootstrap": "yarn || npm i",
+    "build": "umi-library build"
+  },
+  "repository": "git@github.com:ts-react/policy.git",
+  "author": "wangxingkang <wangxingkang@sensoro.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.4.5",
+    "umi-library": "^1.5.1"
+  }
+}
