@@ -1,4 +1,4 @@
-import { isString, isArray } from '@/utils/utils';
+import { isString, isArray } from './utils/utils';
 
 export interface IModuleAction {
   [module: string]: string[]
