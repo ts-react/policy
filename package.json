@@ -12,13 +12,18 @@
   ],
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "build": "umi-library build"
+    "build": "umi-library build",
+    "test": "umi-test"
   },
   "repository": "git@github.com:ts-react/policy.git",
-  "author": "wangxingkang <wangxingkang@sensoro.com>",
+  "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^3.4.5",
+    "umi-test": "^1.5.7",
     "umi-library": "^1.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
