@@ -4,11 +4,7 @@ const options: IBundleOptions = {
   esm: {
     type: 'rollup'
   },
-  cjs: 'rollup',
-  umd: {
-    name: 'Policy',
-    minFile: false
-  }
+  cjs: 'rollup'
 };
 
 export default options;

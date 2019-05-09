@@ -1,22 +1,22 @@
 import { isString, isArray } from '@/utils/utils';
 
-interface IModuleAction {
+export interface IModuleAction {
   [module: string]: string[]
 }
 
-interface IAction {
+export interface IAction {
   module: string;
   name: string;
 }
 
-interface IStatement {
+export interface IStatement {
   // 授权效力 allow: 允许 deny: 禁止
   effect: 'allow' | 'deny';
   // 操作列表
   action: '*' | string[];
 }
 
-interface IPolicyData {
+export interface IPolicyData {
   version: string | number;
   statement: IStatement[]
 }

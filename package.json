@@ -1,16 +1,14 @@
 {
   "name": "@jiumao/policy",
   "version": "0.0.1",
-  "main": "lib/redux.js",
+  "main": "dist/index.js",
   "unpkg": "dist/redux.js",
-  "module": "es/redux.js",
-  "typings": "./index.d.ts",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "lib",
-    "es",
-    "src",
-    "index.d.ts"
+    "src"
   ],
   "scripts": {
     "bootstrap": "yarn || npm i",
