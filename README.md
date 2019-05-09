@@ -74,10 +74,10 @@ interface IPolicyData {
 
 **参数**
 
-* action
+1、action
 
-eg1: `'*'`
-eg2: `'module1/action1'`
+- eg1: `'*'`
+- eg2: `'module1/action1'`
 
 
 ### multipleVerify(actions: string | string[]): boolean
@@ -86,11 +86,11 @@ eg2: `'module1/action1'`
 
 **参数**
 
-* action
+1、actions
 
-eg1: `'*'`
-eg2: `'module1/action1'`
-eg3: `['module1/action1', 'module1/action2']`
+- eg1: `'*'`
+- eg2: `'module1/action1'`
+- eg3: `['module1/action1', 'module1/action2']`
 
 ### combinationVerify(actionStr: string): boolean
 
@@ -100,11 +100,11 @@ eg3: `['module1/action1', 'module1/action2']`
 
 **参数**
 
-* action
+1、action
 
-eg1: `'!module1/action1'`
-eg2: `'module1/action1' && 'module1/action2'`
-eg3: `'module1/action1' || 'module1/action2'`
+- eg1: `'!module1/action1'`
+- eg2: `'module1/action1' && 'module1/action2'`
+- eg3: `'module1/action1' || 'module1/action2'`
 
 ## 策略数据结构
 
