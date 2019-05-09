@@ -1,6 +1,6 @@
 {
   "name": "@jiumao/policy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "unpkg": "dist/redux.js",
   "module": "dist/index.esm.js",
@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "bootstrap": "yarn || npm i",
+    "doc:dev": "umi-library doc dev",
+    "doc:build": "umi-library doc build",
     "build": "umi-library build",
     "test": "umi-test"
   },

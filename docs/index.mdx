@@ -1,0 +1,166 @@
+---
+route: /
+name: 'Document'
+---
+
+# Document
+
+## 使用
+
+1、 添加依赖
+
+`npm install @jiumao/policy` || `yarn add @jiumao/policy`
+
+2、 引用
+
+```
+import Policy form '@jiumao/policy';
+```
+
+3、 初始化
+
+```
+const actions = [
+  { module: 'module1', action: 'action1' },
+  { module: 'module1', action: 'action2' },
+  { module: 'module1', action: 'action3' },
+  { module: 'module2', action: 'action1' },
+  { module: 'module2', action: 'action2' },
+]
+
+const policy = new Policy();
+
+policy.addPolicy({
+  version: 1,
+  statement: [
+    {
+      effect: 'allow',
+      action: [
+        'module1/*'
+      ]
+    }
+  ]
+})
+```
+
+4、 验证
+
+```
+policy.multipleVerify('module1/action1'); // true
+policy.multipleVerify(['module1/action1', 'module1/action2', ]); // true
+
+policy.combinationVerify('!module1/action1'); // false
+policy.combinationVerify('module1/action1 && module2/action1'); // false
+policy.combinationVerify('module1/action1 || module2/action1'); // true
+```
+
+## API
+
+### 属性
+
+a. moduleMap
+
+**模块操作Map**
+
+```
+[module: string]: string[]
+```
+
+b. allowActions
+
+**允许操作集合**
+
+```
+string[]
+```
+
+c. denyActions
+
+**禁止操作集合**
+
+```
+string[]
+```
+
+### 方法
+
+a. addPolicy
+
+**添加策略**
+
+* 参数
+
+policy 需要添加的策略
+
+```
+interface IStatement {
+  // 授权效力 allow: 允许 deny: 禁止
+  effect: 'allow' | 'deny';
+  // 操作列表
+  action: '*' | string[];
+}
+
+interface IPolicyData {
+  version: string | number;
+  statement: IStatement[]
+}
+
+eg: {
+  version: 1,
+  statement: [
+    {
+      effect: 'allow',
+      action: 'module/*'
+    }
+  ]
+}
+```
+
+* 返回值
+
+无
+
+b. singleVerify
+
+**单个action验证**
+
+* 参数
+
+action
+
+```
+string
+
+eg: '*'
+```
+
+c. multipleVerify
+
+**单个/多个action验证**
+
+* 参数
+
+actions
+
+```
+string | string[]
+
+eg: ['module1/action1', ...]
+```
+
+d. combinationVerify
+
+**组合action验证**
+
+> 支持`!`、`&&`、`||`
+
+* 参数
+
+```
+string
+
+eg: '!module1/action1'
+eg: 'module1/action1' && 'module1/action2'
+eg: 'module1/action1' || 'module1/action2'
+
+```
