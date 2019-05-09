@@ -11,12 +11,11 @@ const actions: IAction[] = [
 
 let policy = null;
 
+beforeEach(() => {
+  policy = new Policy(actions);
+});
+
 describe('test policy', () => {
-
-  beforeEach(() => {
-    policy = new Policy(actions);
-  });
-
   it('init', () => {
     expect(policy.moduleMap).toEqual({
       module1: ['module1/action1', 'module1/action2', 'module1/action3', ],
@@ -63,7 +62,7 @@ describe('test policy', () => {
     );
   });
 
-  it('add allow policy and deny policy', () => {
+  it('add allow and deny', () => {
     policy.addPolicy({
       version: 1,
       statement: [
@@ -91,8 +90,12 @@ describe('test policy', () => {
       ['module1/action1', 'module2/action1', 'module2/action2']
     );
   });
+});
 
-  it('verify action', () => {
+// 测试验证
+describe('action verify', () => {
+
+  it('multipleVerify string', () => {
     policy.addPolicy({
       version: 1,
       statement: [
@@ -112,11 +115,98 @@ describe('test policy', () => {
       ]
     });
 
-    expect(policy.verifyAction('module1/action1')).toEqual(false);
-
-    expect(policy.verifyAction(['module2/action1', 'module2/action2'])).toEqual(true);
-
-    expect(policy.verifyAction(['module2/action1'])).toEqual(true);
+    expect(policy.multipleVerify('module1/action1')).toEqual(false);
   });
 
+  it('multipleVerify array', () => {
+    policy.addPolicy({
+      version: 1,
+      statement: [
+        {
+          effect: 'allow',
+          action: [
+            'module1/action1',
+            'module2/*',
+          ]
+        },
+        {
+          effect: 'deny',
+          action: [
+            'module1/action1'
+          ]
+        }
+      ]
+    });
+
+    expect(policy.multipleVerify(['module2/action1', 'module2/action2'])).toEqual(true);
+  });
+
+  it('combinationVerify !', () => {
+    policy.addPolicy({
+      version: 1,
+      statement: [
+        {
+          effect: 'allow',
+          action: [
+            'module1/action1',
+            'module2/*',
+          ]
+        },
+        {
+          effect: 'deny',
+          action: [
+            'module1/action1'
+          ]
+        }
+      ]
+    });
+
+    expect(policy.combinationVerify('!module1/action1')).toEqual(true);
+  });
+
+  it('combinationVerify &&', () => {
+    policy.addPolicy({
+      version: 1,
+      statement: [
+        {
+          effect: 'allow',
+          action: [
+            'module1/action1',
+            'module2/*',
+          ]
+        },
+        {
+          effect: 'deny',
+          action: [
+            'module1/action1'
+          ]
+        }
+      ]
+    });
+
+    expect(policy.combinationVerify('module2/action1 && module2/action2')).toEqual(true);
+  });
+
+  it('combinationVerify ||', () => {
+    policy.addPolicy({
+      version: 1,
+      statement: [
+        {
+          effect: 'allow',
+          action: [
+            'module1/action1',
+            'module2/*',
+          ]
+        },
+        {
+          effect: 'deny',
+          action: [
+            'module1/action1'
+          ]
+        }
+      ]
+    });
+
+    expect(policy.combinationVerify('module2/action1 || module2/action2')).toEqual(true);
+  });
 });

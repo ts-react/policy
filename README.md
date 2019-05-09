@@ -40,6 +40,72 @@ policy.verifyAction('module2/action1'); // false
 
 ```
 
+## API
+
+* moduleMap     模块操作Map
+* allowActions  允许操作集合
+* denyActions   禁止操作集合
+
+### addPolicy(policy)
+
+添加权限策略
+
+**参数**
+
+* policy
+
+```
+interface IStatement {
+  // 授权效力 allow: 允许 deny: 禁止
+  effect: 'allow' | 'deny';
+  // 操作列表
+  action: '*' | string[];
+}
+
+interface IPolicyData {
+  version: string | number;
+  statement: IStatement[]
+}
+```
+
+### singleVerify(action: string): boolean
+
+单个action验证
+
+**参数**
+
+* action
+
+eg1: `'*'`
+eg2: `'module1/action1'`
+
+
+### multipleVerify(actions: string | string[]): boolean
+
+单个/多个action验证
+
+**参数**
+
+* action
+
+eg1: `'*'`
+eg2: `'module1/action1'`
+eg3: `['module1/action1', 'module1/action2']`
+
+### combinationVerify(actionStr: string): boolean
+
+组合action验证
+
+> ! 取非 && 且  || 或
+
+**参数**
+
+* action
+
+eg1: `'!module1/action1'`
+eg2: `'module1/action1' && 'module1/action2'`
+eg3: `'module1/action1' || 'module1/action2'`
+
 ## 策略数据结构
 
 ```

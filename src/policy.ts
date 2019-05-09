@@ -55,15 +55,28 @@ class Policy {
     return moduleMap;
   };
 
+  // 需要验证组合条件时
+  // eg: '((goods/create && !goods/list) && goods/info) || * || goods/info'
+  combinationVerify = (actionStr: string): boolean => {
+    const reg = /([\w|\d|\*]+\/[\w|*]+)|\*/g;
+    let matchList = actionStr.match(reg);
+    matchList.map((item) => {
+      const result = this.singleVerify(item) ? 'true' : 'false';
+      actionStr = actionStr.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, result);
+    });
+    console.log(actionStr);
+    return !!eval(actionStr)
+  };
+
   // 验证Action
-  verifyAction = (actions: string | string[]): boolean => {
+  multipleVerify = (actions: string | string[]): boolean => {
     if (isString(actions)) {
-      return this.oneActionVerify(actions as string);
+      return this.singleVerify(actions as string);
     }
 
     if (isArray(actions)) {
       for(let i = 0, len = actions.length; i < len; i++) {
-        const result = this.oneActionVerify(actions[i]);
+        const result = this.singleVerify(actions[i]);
         if (!result) {
           return false;
         }
@@ -75,7 +88,7 @@ class Policy {
 
   // 验证单个action
   // * | 'module1/action1'
-  oneActionVerify = (action: string): boolean => {
+  singleVerify = (action: string): boolean => {
     // 表示任何用户皆可以访问
     if (action === '*') {
       return true;
@@ -114,12 +127,14 @@ class Policy {
         }
 
         if (effect === 'allow') {
-          this.allowActions = this.allowActions.concat(actions);
+          const actionList = this.allowActions.concat(actions);
+          this.allowActions = [...new Set(actionList)];
           return;
         }
 
         if (effect === 'deny') {
-          this.denyActions = this.denyActions.concat(actions);
+          const actionList = this.denyActions.concat(actions);
+          this.denyActions = [...new Set(actionList)];
           return;
         }
       })
@@ -127,7 +142,7 @@ class Policy {
   };
 
   // 解析Action
-  parseAction = (action: string): string[] => {
+  private parseAction = (action: string): string[] => {
     const actions = this.getAllAction();
     let result = [];
 
@@ -149,7 +164,7 @@ class Policy {
   };
 
   // 获取所有的Action
-  getAllAction = () => {
+  private getAllAction = () => {
     let actions = [];
     const modules = Object.keys(this.moduleMap);
 
