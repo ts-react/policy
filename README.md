@@ -29,7 +29,7 @@ policy.addPolicy({
     {
       effect: 'allow',
       action: [
-        'module1:*'
+        'module1/*'
       ]
     }
   ]

@@ -19,9 +19,10 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^24.0.12",
     "typescript": "^3.4.5",
-    "umi-test": "^1.5.7",
-    "umi-library": "^1.5.1"
+    "umi-library": "^1.5.1",
+    "umi-test": "^1.5.7"
   },
   "publishConfig": {
     "access": "public"
