@@ -1,5 +1,8 @@
 # Policy
 
+[![NPM version](https://img.shields.io/npm/v/@jiumao/policy.svg?style=flat)](https://npmjs.org/package/@jiumao/policy)
+[![NPM downloads](http://img.shields.io/npm/dm/@jiumao/policy.svg?style=flat)](https://npmjs.org/package/@jiumao/policy)
+
 > 阿里云 [Policy](https://help.aliyun.com/document_detail/28664.html?spm=a2c8b.12215508.policylist.2.ff466253ERVmtX) 语法结构
 
 ## 如何使用
