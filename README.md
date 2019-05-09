@@ -35,8 +35,8 @@ policy.addPolicy({
   ]
 })
 
-policy.verifyAction('module1/action1'); // true
-policy.verifyAction('module2/action1'); // false
+policy.multipleVerify('module1/action1'); // true
+policy.multipleVerify('module2/action1'); // false
 
 ```
 
@@ -52,7 +52,7 @@ policy.verifyAction('module2/action1'); // false
 
 **参数**
 
-* policy
+1、 policy
 
 ```
 interface IStatement {
