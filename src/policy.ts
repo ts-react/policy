@@ -37,7 +37,7 @@ class Policy {
     this.denyActions = [];
   }
 
-  getModuleMap = (actions: IAction[]) => {
+  private getModuleMap = (actions: IAction[] = []) => {
     const moduleMap = {};
 
     if (actions && actions.length) {
@@ -58,7 +58,7 @@ class Policy {
   // 验证Action
   verifyAction = (actions: string | string[]): boolean => {
     if (isString(actions)) {
-      return this.oneActionVerify(actions);
+      return this.oneActionVerify(actions as string);
     }
 
     if (isArray(actions)) {
@@ -73,7 +73,9 @@ class Policy {
     }
   };
 
-  oneActionVerify = (action) => {
+  // 验证单个action
+  // * | 'module1/action1'
+  oneActionVerify = (action: string): boolean => {
     // 表示任何用户皆可以访问
     if (action === '*') {
       return true;
@@ -102,13 +104,11 @@ class Policy {
         let actions = [];
 
         if (isString(action)) {
-          // @ts-ignore
-          actions = this.parseAction(action);
+          actions = this.parseAction(action as string);
         }
 
         if (isArray(action)) {
-          // @ts-ignore
-          action.forEach(item => {
+          (action as string[]).forEach(item => {
             actions = actions.concat(this.parseAction(item));
           });
         }
