@@ -1,6 +1,6 @@
 {
   "name": "@jiumao/policy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "unpkg": "dist/redux.js",
   "module": "dist/index.esm.js",
@@ -15,6 +15,7 @@
     "doc:dev": "umi-library doc dev",
     "doc:build": "umi-library doc build",
     "build": "umi-library build",
+    "prepare": "yarn build",
     "test": "umi-test"
   },
   "repository": "git@github.com:ts-react/policy.git",
