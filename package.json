@@ -1,6 +1,6 @@
 {
   "name": "@jiumao/policy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "unpkg": "dist/redux.js",
   "module": "dist/index.esm.js",
@@ -9,6 +9,10 @@
     "dist",
     "lib",
     "src"
+  ],
+  "keywords": [
+    "policy",
+    "authorized"
   ],
   "scripts": {
     "bootstrap": "yarn || npm i",
