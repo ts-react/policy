@@ -150,7 +150,7 @@ class Policy {
       result = actions;
     } else {
       const list = action.split('/');
-      if (list.length === 2 && actions.length) {
+      if (list.length === 2) {
         const moduleName = list[0];
         const actionName = list[1];
         if (actionName === '*') {
