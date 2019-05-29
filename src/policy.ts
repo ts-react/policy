@@ -6,7 +6,7 @@ export interface IModuleAction {
 
 export interface IAction {
   module: string;
-  name: string;
+  action: string;
 }
 
 export interface IStatement {
@@ -43,7 +43,7 @@ class Policy {
     if (actions && actions.length) {
       actions.forEach(item => {
         const moduleName = item.module;
-        const policyAction = `${item.module}/${item.name}`;
+        const policyAction = `${item.module}/${item.action}`;
         if (!moduleMap[moduleName]) {
           moduleMap[moduleName] = [policyAction];
         } else {
@@ -154,7 +154,7 @@ class Policy {
         const moduleName = list[0];
         const actionName = list[1];
         if (actionName === '*') {
-          result = this.moduleMap[moduleName];
+          actions.length && (result = this.moduleMap[moduleName] || []) ;
         } else {
           result = [action];
         }

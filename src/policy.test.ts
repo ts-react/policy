@@ -1,12 +1,12 @@
 import Policy, { IAction } from './policy';
 
 const actions: IAction[] = [
-  { module: 'module1', name: 'action1' },
-  { module: 'module1', name: 'action2' },
-  { module: 'module1', name: 'action3' },
-  { module: 'module2', name: 'action1' },
-  { module: 'module2', name: 'action2' },
-  { module: 'module3', name: 'action1' },
+  { module: 'module1', action: 'action1' },
+  { module: 'module1', action: 'action2' },
+  { module: 'module1', action: 'action3' },
+  { module: 'module2', action: 'action1' },
+  { module: 'module2', action: 'action2' },
+  { module: 'module3', action: 'action1' },
 ];
 
 let policy = null;

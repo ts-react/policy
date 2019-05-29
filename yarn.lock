@@ -1510,6 +1510,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@jiumao/dharma@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jiumao/dharma/-/dharma-0.0.4.tgz#c1fe3c54047d742ccb19f9715d2da5d07cafe316"
+  integrity sha512-nUK5oGWGDuFVbUJHL459UQr0hmX/kXMx4/oojcjppJsO0oB/rF/GFWc6Vtr8cyvjtVBR3ANY1tSgfhUZe1zGtw==
+
 "@loadable/component@^5.9.0":
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.9.0.tgz#9b3e983f14c730d1c8894c352b78ebc401091f76"

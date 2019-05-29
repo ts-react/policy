@@ -1,6 +1,6 @@
 {
   "name": "@jiumao/policy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "unpkg": "dist/redux.js",
   "module": "dist/index.esm.js",
@@ -32,5 +32,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@jiumao/dharma": "^0.0.4"
   }
 }
