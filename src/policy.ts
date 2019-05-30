@@ -64,7 +64,6 @@ class Policy {
       const result = this.singleVerify(item) ? 'true' : 'false';
       actionStr = actionStr.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, result);
     });
-    console.log(actionStr);
     return !!eval(actionStr)
   };
 
