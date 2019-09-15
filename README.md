@@ -3,7 +3,9 @@
 [![NPM version](https://img.shields.io/npm/v/@jiumao/policy.svg?style=flat)](https://npmjs.org/package/@jiumao/policy)
 [![NPM downloads](http://img.shields.io/npm/dm/@jiumao/policy.svg?style=flat)](https://npmjs.org/package/@jiumao/policy)
 
-> 阿里云 [Policy](https://help.aliyun.com/document_detail/28664.html?spm=a2c8b.12215508.policylist.2.ff466253ERVmtX) 语法结构
+> 阿里云 [Policy](https://help.aliyun.com/document_detail/28664.html?spm=a2c8b.12215508该.policylist.2.ff466253ERVmtX) 语法结构
+
+**注意:** 该工具类已收录在 [autils](https://github.com/alitajs/autils) 该项目归档
 
 ## 如何使用
 
